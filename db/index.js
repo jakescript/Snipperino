@@ -2,11 +2,7 @@ const Sequelize = require("sequelize");
 const { STRING, INTEGER, TEXT, DATE} = Sequelize;
 const faker = require("faker");
 
-const conn = new Sequelize('test', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql',
-    logging: false
-});
+const conn = new Sequelize(process.env.DATABASE_URL);
 
 const Post = conn.define("Post", {
     title: STRING,

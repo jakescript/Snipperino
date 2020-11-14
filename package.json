@@ -1,21 +1,25 @@
 {
-  "name": "sequalize",
+  "name": "jakescript-cms",
   "version": "1.0.0",
-  "description": "",
+  "description": "basic cms",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server"
+    "start": "node server",
+    "start:dev": "nodemon server"
   },
-  "author": "",
+  "author": "jakescript",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "method-override": "^3.0.0",
-    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "pg": "^8.4.2",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6"
   }
 }
