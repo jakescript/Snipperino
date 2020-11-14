@@ -2,7 +2,7 @@ const {adminNav, head} = require("../templates")
 
 const adminView = (posts) => `
     <html>
-        ${head({title: "Blog"})}
+        ${head({title: "Blog", styles: "/assets/admin.css"})}
         <body>
             ${adminNav()}
             <div class="main-page">

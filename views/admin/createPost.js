@@ -2,17 +2,25 @@ const {adminNav, head} = require("../templates")
 
 const createPostView = () => `
     <html>
-        ${head({title: "Blog"})}
+        ${head({title: "Blog", styles: "/assets/admin.css"})}
         <body>
             ${adminNav()}
             <h1> New Blog Post </h1>
             <div id="form-container">
                 <form method="POST" action="/admin/post/create">
-                    <input name="title" placeholder="title"/>
-                    <input name="author" placeholder="author"/>
-                    <input name="content" placeholder="body"/>
-
-                    <button> Create Post </button>
+                    <div class="input-block">
+                        <label for="title">Title</label>
+                        <input name="title" id="title" />
+                    </div>
+                    <div class="input-block">
+                        <label for="author">Author</label>
+                        <input name="author" id="author" />
+                    </div>
+                    <div class="input-block">
+                        <label for="content">Content</label>
+                        <textarea name="content" id="content"> </textarea>
+                    </div>
+                    <button id="create-btn"> Create Post </button>
                 </form>
             </div>
         </body>

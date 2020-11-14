@@ -12,9 +12,10 @@ const adminNav = () => `
     <li> <a href="/admin/post/create">New Post</a> </li>
 </ul>`
 
-const head = ({title}) => `<head>
+const head = ({title, styles}) => `<head>
     <title>${title}</title>
-    <link rel="stylesheet" href="/assets/styles.css"/>
+    <link rel="stylesheet" href="${styles}"/>
+    <link rel="stylesheet" href="/assets/nav.css"/>
 </head>`
 
 module.exports = {

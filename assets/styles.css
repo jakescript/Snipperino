@@ -6,44 +6,12 @@ h2{
     font-weight: 500;
 }
 
-li{
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-}
-
-#nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#nav li{
-    margin: 10px;
-}
-
-#form-container form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#form-container input{
-    width: 30%;
-    margin: 0.5rem;
-}
-
 #post-container{
     display: flex;
     flex-wrap: wrap;
     text-align: center;
     justify-content: center;
-}
-
-.admin-container{
-    flex-direction: column;
+    margin: 50px;
 }
 
 .main-page{
@@ -52,15 +20,11 @@ a{
     align-items: center;
 }
 
-#del-btn{
-    display: flex;
-    margin: 10px;
-}
-
 .post-item{
     flex-basis: 40%;
-    border: 2px solid black;
+    background-color: aliceblue;
     margin: 1rem;
+    padding: 20px;
 }
 
 .wrapper{

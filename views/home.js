@@ -2,7 +2,7 @@ const {nav, head} = require("./templates")
 
 const homeView = () => `
     <html>
-        ${head({title: "Blog"})}
+        ${head({title: "Blog", styles: "/assets/styles.css"})}
         <body>
             ${nav()}
             <h1> Welcome! </h1>

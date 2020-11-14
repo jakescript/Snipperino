@@ -2,7 +2,7 @@ const {nav, head} = require("./templates")
 
 const singlePost = (post) => `
     <html>
-        ${head({title: "Blog"})}
+        ${head({title: "Blog", styles: "/assets/styles.css"})}
         <body>
             ${nav()}
             <h1> Blog Posts </h1>
