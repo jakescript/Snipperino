@@ -44,7 +44,7 @@ router.post("/post/create", async(req, res, next) => {
 router.delete("/post/:id", async (req, res, next) => {
     try {
         const post = await Post.findByPk(req.params.id);
-        post.destroy()
+        await post.destroy()
         res.redirect("/admin");
     } catch (error) {
         next(error)
