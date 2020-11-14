@@ -5,25 +5,50 @@ const {models: { Post }} = require("../db");
 const createPostView = require("../views/admin/createPost");
 const adminView = require("../views/admin/adminView");
 
-
 router.get("/", async(req, res, next) => {
-    const postList = await Post.findAll()
-    res.send(adminView(postList))
-})
-
-router.get("/blog/create", async(req, res, next) => {
-    res.send(createPostView())
+    try {
+        const postList = await Post.findAll();
+        if(postList.length >= 1){
+            res.send(adminView(postList));
+        }else{
+            res.send("No Posts")
+        };
+    } catch (error) {
+        next(error);
+    };
 });
 
-router.post("/blog/create", async(req, res, next) => {
-    const {title, author, content} = req.body
-    await Post.create({
-        title,
-        author,
-        content
-    });
+router.get("/post/create", async(req, res, next) => {
+    try {
+        res.send(createPostView())
+    } catch (error) {
+        next(error)
+    }
+});
 
-    res.redirect("/blog");
+router.post("/post/create", async(req, res, next) => {
+    try {
+        const {title, author, content} = req.body
+        await Post.create({
+            title,
+            author,
+            content
+        });
+
+        res.redirect("/blog");
+    } catch (error) {
+        next(error)
+    };
+});
+
+router.delete("/post/:id", async (req, res, next) => {
+    try {
+        const post = await Post.findByPk(req.params.id);
+        post.destroy()
+        res.redirect("/admin");
+    } catch (error) {
+        next(error)
+    };
 });
 
 module.exports = router;

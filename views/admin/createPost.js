@@ -7,7 +7,7 @@ const createPostView = () => `
             ${adminNav()}
             <h1> New Blog Post </h1>
             <div id="form-container">
-                <form method="POST" action="/admin/blog/create">
+                <form method="POST" action="/admin/post/create">
                     <input name="title" placeholder="title"/>
                     <input name="author" placeholder="author"/>
                     <input name="content" placeholder="body"/>

@@ -12,7 +12,7 @@ const adminView = (posts) => `
                     <div id="post-container" class="admin-container">
                         ${posts.map(post => `
                         <div class="post-item">
-                            <form method="POST" action="/admin/post/${post.id}/destroy">
+                            <form method="POST" action="/admin/post/${post.id}?_method=DELETE">
                                 <button id="del-btn">X</button>
                             </form>
                             <h1> <a href="/blog/${post.dataValues.id}">${post.dataValues.title}</a></h1>

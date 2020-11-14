@@ -9,7 +9,7 @@ const adminNav = () => `
 <ul id="nav" class="admin">
     <li> <a href="/">Home</a> </li>
     <li> <a href="/blog">Blog</a> </li>
-    <li> <a href="/admin/blog/create">New Post</a> </li>
+    <li> <a href="/admin/post/create">New Post</a> </li>
 </ul>`
 
 const head = ({title}) => `<head>
