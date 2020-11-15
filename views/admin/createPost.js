@@ -7,7 +7,7 @@ const createPostView = () => `
             ${adminNav()}
             <h1> New Blog Post </h1>
             <div id="form-container">
-                <form method="POST" action="/admin/post/create">
+                <form method="POST" action="/admin/post/create" enctype="multipart/form-data">
                     <div class="input-block">
                         <label for="title">Title</label>
                         <input name="title" id="title" />
@@ -19,6 +19,11 @@ const createPostView = () => `
                     <div class="input-block">
                         <label for="content">Content</label>
                         <textarea name="content" id="content"> </textarea>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="image">Image</label>
+                        <input id="image" name="thumbnail" type="file"/>
                     </div>
                     <button id="create-btn"> Create Post </button>
                 </form>

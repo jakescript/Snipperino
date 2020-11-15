@@ -25,7 +25,7 @@ const init = async () => {
     try {
         await conn.authenticate();
         await seed();
-        app.listen(process.env.PORT || 3000, () => console.log("Listening"));
+        app.listen(process.env.PORT || 8080, () => console.log("Listening"));
     } catch (error) {
         console.log(error);
     };

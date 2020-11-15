@@ -1,9 +1,24 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const {models: { Post }} = require("../db");
 
 const createPostView = require("../views/admin/createPost");
 const adminView = require("../views/admin/adminView");
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null,"uploads")
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname + "-" + Date.now());
+    }
+});
+
+const upload = multer({storage: storage});
 
 router.get("/", async(req, res, next) => {
     try {
@@ -26,15 +41,28 @@ router.get("/post/create", async(req, res, next) => {
     }
 });
 
-router.post("/post/create", async(req, res, next) => {
+router.post("/post/create", upload.single("thumbnail"), async(req, res, next) => {
     try {
+        const file = req.file;
+        console.log(file)
+        if(!file){
+            const err = new Error("Please Upload A File");
+            err.httpStatusCode = 400;
+            return next(err);
+        };
+
+        const img = fs.readFileSync(file.path);
+        const encodedImg = img.toString("base64");
+
         const {title, author, content} = req.body
         await Post.create({
             title,
             author,
-            content
+            content,
+            thumbnail: Buffer.from(encodedImg, "base64")
         });
 
+        // fs.unlink(fiel.path);
         res.redirect("/blog");
     } catch (error) {
         next(error)

@@ -1,13 +1,18 @@
 const Sequelize = require("sequelize");
-const { STRING, INTEGER, TEXT, DATE} = Sequelize;
+const { STRING, INTEGER, TEXT, BLOB} = Sequelize;
 const faker = require("faker");
 
-const conn = new Sequelize(process.env.DATABASE_URL);
+const conn = new Sequelize('test', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql',
+    logging: false
+});
 
 const Post = conn.define("Post", {
     title: STRING,
     author: STRING,
-    content: TEXT
+    content: TEXT,
+    thumbnail: BLOB("long")
 });
 
 const destroyPost = (postId) => {
