@@ -11,7 +11,7 @@ const adminView = require("../views/admin/adminView");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null,"uploads")
+        cb(null,"temp")
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname + "-" + Date.now());
@@ -62,7 +62,7 @@ router.post("/post/create", upload.single("thumbnail"), async(req, res, next) =>
             thumbnail: Buffer.from(encodedImg, "base64")
         });
 
-        fs.unlink(fiel.path);
+        await fs.unlinkSync(file.path);
         res.redirect("/blog");
     } catch (error) {
         next(error)
