@@ -62,7 +62,7 @@ router.post("/post/create", upload.single("thumbnail"), async(req, res, next) =>
             thumbnail: Buffer.from(encodedImg, "base64")
         });
 
-        // fs.unlink(fiel.path);
+        fs.unlink(fiel.path);
         res.redirect("/blog");
     } catch (error) {
         next(error)
