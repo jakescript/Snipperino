@@ -21,3 +21,5 @@ Access the admin panel using the /admin route from the root url. From there you 
 ## To Do  
 * add image uploading
 * make it pretty
+* seperate front end
+* add s3 integration for images
