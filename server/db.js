@@ -15,11 +15,6 @@ const Post = conn.define("Post", {
     thumbnail: BLOB("long")
 });
 
-const destroyPost = (postId) => {
-    const post = Post.findByPk(postId);
-    post.destroy()
-};
-
 const seed = async () => {
     await conn.sync({force: true, logging: false})
 
@@ -37,6 +32,5 @@ module.exports = {
     seed,
     models: {
         Post
-    },
-    destroyPost
+    }
 }
