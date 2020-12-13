@@ -9,14 +9,16 @@ class Editor extends React.Component{
     constructor(){
         super()
         this.state = {
-            code: `console.log("Hello World")`,
-            title: ""
+            code: "console.log('Hello World')",
+            title: "",
+            errorMsg: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.titleChange = this.titleChange.bind(this)
         this.shareSnippet = this.shareSnippet.bind(this)
         this.run = this.run.bind(this)
+        console.clear()
     }
 
     handleChange(newVal){
@@ -27,11 +29,11 @@ class Editor extends React.Component{
 
     titleChange(ev){
         this.setState({title: ev.target.value})
-        console.log(this.state.title)
     }
 
     run(){
         try {
+            console.clear()
             const code = (new Function(this.state.code))()
         } catch (error) {
             console.log(error)
@@ -41,10 +43,16 @@ class Editor extends React.Component{
     async shareSnippet(){
         try {
             console.log(this.state)
-            await axios.post("/api/posts", {
-                title: this.state.title,
-                content: this.state.code
-            })
+            if(this.state.code === ""){
+                this.setState({errorMsg: "Write some code...."})
+            }else{
+                await axios.post("/api/posts", {
+                    title: this.state.title,
+                    content: this.state.code
+                })
+
+                window.location.reload()
+            }
         } catch (error) {
             console.log(error)
         }
@@ -66,19 +74,19 @@ class Editor extends React.Component{
                         editorProps={{ $blockScrolling: true }}
                     />
                 </div>
-                    <div id="controls">
-                        <p>Title this snippet</p>
-                        <input
-                            type="text"
-                            placeholder="my amazing snippet!"
-                            value={this.state.title}
-                            onChange={this.titleChange}
-                        />
-                        <p> ( code output shown in dev tools console)</p>
-                        <button onClick={this.run}>execute</button>
-                        <button onClick={this.shareSnippet}> share snippet! </button>
-                    </div>
-
+                <div id="controls">
+                    <p>Title this snippet</p>
+                    <input
+                        type="text"
+                        placeholder="my amazing snippet!"
+                        value={this.state.title}
+                        onChange={this.titleChange}
+                    />
+                    <p id="error-container">{this.state.errorMsg}</p>
+                    <p> ( code output shown in dev tools console)</p>
+                    <button className="cta-button" onClick={this.run}>execute</button>
+                    <button className="cta-button" onClick={this.shareSnippet}> share snippet! </button>
+                </div>
             </div>
         )
     }

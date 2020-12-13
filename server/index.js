@@ -2,8 +2,12 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const {conn, seed } = require("./db");
+const bodyParser = require('body-parser');
 
 const adminRoutes = require("../routes/admin");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(require("method-override")("_method"));
 app.use(express.urlencoded({extended: false}));

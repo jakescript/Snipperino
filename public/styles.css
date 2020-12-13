@@ -1,3 +1,8 @@
+body {
+  background-color: #292f33;
+  color: #e1e8ed;
+}
+
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -10,18 +15,64 @@
   display: flex;
 }
 
+.snippet-wrapper {
+  background-color: #66757f;
+  margin: 1rem;
+}
+
+.cta-button {
+  margin: 10px;
+  box-sizing: border-box;
+  padding: 12px 8px;
+  background: none;
+  border: 2px solid white;
+  color: #ffffff;
+  transition: background-color 0.5s ease;
+}
+
+.cta-button:hover {
+  background-color: #55acee;
+  cursor: pointer;
+}
+
 #snippet-container {
   display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: space-around;
   flex: 1 50%;
   flex-wrap: wrap;
+  margin-top: 15vh;
 }
 
 .editor {
   margin: 10px;
 }
 
+#header {
+  text-align: center;
+  font-size: 2rem;
+}
+
+#header p {
+  font-size: 1rem;
+  margin-top: -40px;
+  margin-bottom: 2em;
+}
+
+#snippet-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 #controls {
   margin-left: 20px;
+}
+
+#controls p:first-child {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+#error-container {
+  color: red;
 }
