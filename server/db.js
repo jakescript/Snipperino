@@ -2,29 +2,25 @@ const Sequelize = require("sequelize");
 const { STRING, INTEGER, TEXT, BLOB} = Sequelize;
 const faker = require("faker");
 
-const conn = new Sequelize('test', 'root', '', {
+const conn = new Sequelize('cms', 'jacob', 'captincarl69', {
     host: 'localhost',
-    dialect: 'mysql',
+    dialect: 'postgresql',
     logging: false
 });
 
 const Post = conn.define("Post", {
     title: STRING,
-    author: STRING,
     content: TEXT,
-    thumbnail: BLOB("long")
 });
 
 const seed = async () => {
     await conn.sync({force: true, logging: false})
 
-    for(let i = 1; i <= 3; i++){
-        await Post.create({
-            title: faker.lorem.words(Math.floor(Math.random() * Math.floor(5)) + 1),
-            author: faker.name.firstName(),
-            content: faker.lorem.paragraph()
-        });
-    };
+    await Promise.all([
+        Post.create({title: "Hello World", content: "console.log('hello world')"}),
+        Post.create({title: "Silly Goose", content: "console.log('hey dummy')"}),
+        Post.create({title: "Poop Function", content: "function() { const poop = 'poop'}"})
+    ])
 };
 
 module.exports = {

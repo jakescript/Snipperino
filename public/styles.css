@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.editor-container {
+  display: flex;
+}
+
+#snippet-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex: 1 50%;
+  flex-wrap: wrap;
+}
+
+.editor {
+  margin: 10px;
+}
+
+#controls {
+  margin-left: 20px;
+}

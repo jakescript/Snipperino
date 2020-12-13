@@ -17,13 +17,12 @@ router.get("/posts", async(req, res, next) => {
 
 router.post("/posts", async(req, res, next) => {
     try {
-       
+
         const {title, author, content} = req.body
         const post = await Post.create({
             title,
-            author,
-            content,
-           
+            content
+
         });
 
         res.send(post)

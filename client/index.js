@@ -1,20 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Editor from "./Editor"
+import App from "./App.js"
 
 
-class App extends React.Component{
-    constructor(){
-        super()
-    }
-
-    render(){
-        return(
-            <div>
-                <Editor />
-            </div>
-        )
-    }
-}
 
 ReactDOM.render(<App />, document.querySelector("#app"))
