@@ -25,7 +25,6 @@ const Post = conn.define("Post", {
 
 const seed = async () => {
     await conn.sync({force: true, logging: false})
-
     await Promise.all([
         Post.create({title: "Hello World", content: "console.log('hello world')"})
     ])

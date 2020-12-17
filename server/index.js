@@ -9,10 +9,9 @@ const adminRoutes = require("../routes/admin");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(require("method-override")("_method"));
 app.use(express.urlencoded({extended: false}));
 app.use("/public", express.static(path.join(__dirname, "../public")));
-app.use(require("morgan")("dev"));
+// app.use(require("morgan")("dev"));
 
 
 app.use("/api", adminRoutes);
@@ -21,7 +20,7 @@ app.get("/", (req, res, next) => res.sendFile(path.join(__dirname, "../public/in
 const init = async () => {
     try {
         await conn.authenticate();
-        await seed();
+        // await seed();
         app.listen(process.env.PORT || 8080, () => console.log("Listening"));
     } catch (error) {
         console.log(error);
