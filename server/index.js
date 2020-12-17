@@ -20,7 +20,7 @@ app.get("/", (req, res, next) => res.sendFile(path.join(__dirname, "../public/in
 const init = async () => {
     try {
         await conn.authenticate();
-        // await seed();
+        await seed();
         app.listen(process.env.PORT || 8080, () => console.log("Listening"));
     } catch (error) {
         console.log(error);
