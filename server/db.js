@@ -1,8 +1,6 @@
 const Sequelize = require("sequelize");
 const { STRING, INTEGER, TEXT, BLOB} = Sequelize;
-const faker = require("faker");
 
-// "postgresql://localhost/cms"
 const conn = new Sequelize(process.env.DATABASE_URL || "postgresql://localhost/cms", { logging: false });
 
 const Post = conn.define("Post", {
@@ -24,7 +22,7 @@ const Post = conn.define("Post", {
 });
 
 const seed = async () => {
-    await conn.sync({logging: false})
+    await conn.sync({force: true, logging: false})
     await Promise.all([
         Post.create({title: "Hello World", content: "console.log('hello world')"})
     ])
